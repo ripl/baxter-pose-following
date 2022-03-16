@@ -4,11 +4,17 @@ set -ex
 
 CUDA_VERSION=10.2
 PYTORCH_VERSION=1.7.0
+TORCHVISION_VERSION=0.8.0a0+45f960c
 PYTORCH_WHEEL_NAME="torch-${PYTORCH_VERSION}.cuda.cudnn-cp38-cp38-linux_aarch64.whl"
+TORCHVISION_WHEEL_NAME="torchvision-${TORCHVISION_VERSION}-cp38-cp38-linux_aarch64.whl"
 
 # install PyTorch
 echo "Installing PyTorch v${PYTORCH_VERSION}..."
 pip3 install "/tmp/assets/${PYTORCH_WHEEL_NAME}"
+
+# install TorchVision
+echo "Installing TorchVision v${TORCHVISION_VERSION}..."
+pip3 install "/tmp/assets/${TORCHVISION_WHEEL_NAME}"
 
 # configure nvidia drivers for Jetson Nano boards
 mkdir -p /usr/share/egl/egl_external_platform.d/
