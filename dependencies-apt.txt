@@ -1,1 +1,4 @@
 # LIST YOUR APT PACKAGES HERE
+
+# this is for PyTorch
+libopenblas-base
