@@ -17,47 +17,34 @@ update-alternatives --install \
 update-alternatives --install \
     /usr/local/bin/pip3 pip3 "$(which pip3.6)" 1
 
-# install PyTorch
-echo "Installing PyTorch v${PYTORCH_VERSION}..."
-
 # remove system-level python libraries
 pip3 uninstall -y pillow numpy
 rm -rf /usr/lib/python3/dist-packages/PIL*
-rm -rf /usr/lib/python3/dist-packages/pillow*
 rm -rf /usr/lib/python3/dist-packages/numpy*
 
 # install the dependencies (if not already onboard)
 apt install --no-install-recommends -y \
     libjpeg-dev \
+    libomp-dev \
     libopenblas-dev \
-    libopenmpi-dev \
-    libomp-dev
-pip3.6 install --target=/usr/local/lib/python3.6/dist-packages \
+    libopenmpi-dev
+pip3 install --target=/usr/local/lib/python3.6/dist-packages \
+    Cython \
     future \
-    wheel \
     mock \
-    pillow \
     numpy \
-    testresources \
+    pillow \
     setuptools==58.3.0 \
-    Cython
-# install PyTorch 1.7.0
-pip3.6 install /tmp/assets/${PYTORCH_WHEEL_NAME}
+    testresources \
+    wheel
 
+# install PyTorch
+echo "Installing PyTorch v${PYTORCH_VERSION}..."
+pip3 install /tmp/assets/${PYTORCH_WHEEL_NAME}
 
 # install TorchVision
 echo "Installing TorchVision v${TORCHVISION_VERSION}..."
-
-apt install --no-install-recommends -y \
-    libjpeg-dev \
-    zlib1g-dev \
-    libpython3-dev \
-    libavcodec-dev \
-    libavformat-dev \
-    libswscale-dev
-# install TorchVision 0.8.0
-pip3.6 install /tmp/assets/${TORCHVISION_WHEEL_NAME}
-
+pip3 install /tmp/assets/${TORCHVISION_WHEEL_NAME}
 
 # configure nvidia drivers for Jetson Nano boards
 mkdir -p /usr/share/egl/egl_external_platform.d/
