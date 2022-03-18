@@ -93,27 +93,20 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     apt update && \
     apt install --no-install-recommends -y python3.6 python3.6-dev
 
-# setup environment (arch-specific)
+# copy arch-specific scripts
 COPY ./assets/${ARCH}/ /tmp/assets
-RUN /tmp/assets/setup.sh && rm -rf /tmp/assets
 
-# install torch2trt
-RUN git clone --depth 1 https://github.com/NVIDIA-AI-IOT/torch2trt \
-    && cd torch2trt/ \
-    && python3 setup.py install --plugins \
-    && cd .. && rm -rf torch2trt/
+# setup environment (arch-specific)
+RUN /tmp/assets/setup.sh
 
-# install other dependencies for trt_pose
-RUN pip3 install \
-    cython \
-    pycocotools \
-    tqdm
-RUN apt update && apt install -y \
-    python3-matplotlib \
-    && rm -rf /var/lib/apt/lists/*
+# install PyTorch
+RUN /tmp/assets/install_torch.sh
 
-# install trt_pose
-RUN git clone --depth 1 https://github.com/NVIDIA-AI-IOT/trt_pose \
-    && cd trt_pose/ \
-    && MAX_JOBS=1 python3 setup.py install \
-    && cd .. && rm -rf trt_pose/
+# install TorchVision
+RUN /tmp/assets/install_torchvision.sh
+
+# install Torch2TRT
+RUN /tmp/assets/install_torch2trt.sh
+
+# install TRTPose
+RUN /tmp/assets/install_trtpose.sh
