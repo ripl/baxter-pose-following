@@ -12,14 +12,19 @@ TORCHVISION_WHEEL_NAME="torchvision-${TORCHVISION_VERSION}-cp36-cp36m-linux_aarc
 cp /tmp/assets/pip3.6 /usr/local/bin/pip3.6
 
 # switch to python3.6
-update-alternatives \
-    --install /usr/bin/python3 python3 "$(which python3.6)" 1
+update-alternatives --install \
+    /usr/bin/python3 python3 "$(which python3.6)" 1
+update-alternatives --install \
+    /usr/local/bin/pip3 pip3 "$(which pip3.6)" 1
 
 # install PyTorch
 echo "Installing PyTorch v${PYTORCH_VERSION}..."
 
 # remove system-level python libraries
 pip3 uninstall -y pillow numpy
+rm -rf /usr/lib/python3/dist-packages/PIL*
+rm -rf /usr/lib/python3/dist-packages/pillow*
+rm -rf /usr/lib/python3/dist-packages/numpy*
 
 # install the dependencies (if not already onboard)
 apt install --no-install-recommends -y \
@@ -27,7 +32,15 @@ apt install --no-install-recommends -y \
     libopenblas-dev \
     libopenmpi-dev \
     libomp-dev
-pip3.6 install future wheel mock pillow numpy testresources setuptools==58.3.0 Cython
+pip3.6 install --target=/usr/local/lib/python3.6/dist-packages \
+    future \
+    wheel \
+    mock \
+    pillow \
+    numpy \
+    testresources \
+    setuptools==58.3.0 \
+    Cython
 # install PyTorch 1.7.0
 pip3.6 install /tmp/assets/${PYTORCH_WHEEL_NAME}
 
