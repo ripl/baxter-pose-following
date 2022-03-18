@@ -2,3 +2,6 @@
 
 # this is for PyTorch
 libopenblas-base
+
+# this is for adding the ppa for python3.6
+software-properties-common

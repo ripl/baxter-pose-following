@@ -88,6 +88,11 @@ LABEL \
 # <== Do not change the code above this line
 # <==================================================
 
+# install Python3.6
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt update && \
+    apt install --no-install-recommends -y python3.6 python3.6-dev
+
 # setup environment (arch-specific)
 COPY ./assets/${ARCH}/ /tmp/assets
 RUN /tmp/assets/setup.sh && rm -rf /tmp/assets
