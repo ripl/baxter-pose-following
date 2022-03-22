@@ -7,4 +7,4 @@ TORCH2TRT_WHEEL_NAME="torch2trt-${TORCH2TRT_VERSION}-cp36-cp36m-linux_aarch64.wh
 
 # install Torch2TRT
 echo "Installing Torch2TRT v${TORCH2TRT_VERSION}..."
-pip3 install /tmp/assets/${TORCH2TRT_WHEEL_NAME}
+pip3.6 install /tmp/assets/${TORCH2TRT_WHEEL_NAME}

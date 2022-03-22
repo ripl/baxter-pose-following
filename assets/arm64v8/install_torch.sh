@@ -12,7 +12,7 @@ apt install --no-install-recommends -y \
     libomp-dev \
     libopenblas-dev \
     libopenmpi-dev
-pip3 install --target=/usr/local/lib/python3.6/dist-packages \
+pip3.6 install --target=/usr/local/lib/python3.6/dist-packages \
     Cython \
     future \
     mock \
@@ -24,4 +24,4 @@ pip3 install --target=/usr/local/lib/python3.6/dist-packages \
 
 # install PyTorch
 echo "Installing PyTorch v${PYTORCH_VERSION}..."
-pip3 install /tmp/assets/${PYTORCH_WHEEL_NAME}
+pip3.6 install /tmp/assets/${PYTORCH_WHEEL_NAME}

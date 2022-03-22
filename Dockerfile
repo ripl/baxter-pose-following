@@ -99,6 +99,9 @@ COPY ./assets/${ARCH}/ /tmp/assets
 # setup environment (arch-specific)
 RUN /tmp/assets/setup.sh
 
+# upgrade pip
+RUN pip3.6 install -U pip
+
 # install PyTorch
 RUN /tmp/assets/install_torch.sh
 
@@ -110,3 +113,9 @@ RUN /tmp/assets/install_torch2trt.sh
 
 # install TRTPose
 RUN /tmp/assets/install_trtpose.sh
+
+# install opencv-python
+RUN pip3.6 install opencv-python
+
+# for quick testing
+# RUN pip3.6 install notebook ipywidgets && pip3.6 uninstall -y cffi

@@ -7,4 +7,4 @@ TORCHVISION_WHEEL_NAME="torchvision-${TORCHVISION_VERSION}-cp36-cp36m-linux_aarc
 
 # install TorchVision
 echo "Installing TorchVision v${TORCHVISION_VERSION}..."
-pip3 install /tmp/assets/${TORCHVISION_WHEEL_NAME}
+pip3.6 install /tmp/assets/${TORCHVISION_WHEEL_NAME}
