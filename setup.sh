@@ -8,3 +8,7 @@ export OPENBLAS_CORETYPE=ARMV8
 
 # replace python3.8 w/ python3.6 in PYTHONPATH
 export PYTHONPATH="${PYTHONPATH//python3.8/python3.6}"
+
+# configure ROS network
+export ROS_MASTER_URI=http://10.0.0.10:11311
+export ROS_HOSTNAME=backpack.local

@@ -1,7 +1,10 @@
 # LIST YOUR APT PACKAGES HERE
 
-# this is for PyTorch
+# for PyTorch
 libopenblas-base
 
-# this is for adding the ppa for python3.6
+# adding the ppa for python3.6
 software-properties-common
+
+# realsense camera for ROS
+ros-noetic-realsense2-camera
