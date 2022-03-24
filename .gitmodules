@@ -1,0 +1,3 @@
+[submodule "packages/trt_pose"]
+	path = packages/trt_pose
+	url = git@github.com:ripl/trt-pose.git
