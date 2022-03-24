@@ -66,7 +66,7 @@ COPY ./*.cpk ./*.sh ${PROJECT_PATH}/
 COPY ./packages "${CPK_PROJECT_PATH}/packages"
 
 # build catkin workspace
-RUN catkin build \
+RUN . /opt/ros/noetic/setup.sh && catkin build \
     --workspace ${CPK_CODE_DIR}
 
 # install packages dependencies
@@ -117,5 +117,6 @@ RUN /tmp/assets/install_trtpose.sh
 # install opencv-python
 RUN pip3.6 install opencv-python
 
-# for quick testing
+# # for quick testing
+# RUN apt install -y tmux
 # RUN pip3.6 install notebook ipywidgets && pip3.6 uninstall -y cffi
