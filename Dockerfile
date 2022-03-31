@@ -62,31 +62,9 @@ RUN cpk-install-launchers "${PROJECT_LAUNCHERS_PATH}"
 # copy project root
 COPY ./*.cpk ./*.sh ${PROJECT_PATH}/
 
-# copy the source code
-COPY ./packages "${CPK_PROJECT_PATH}/packages"
 
-# build catkin workspace
-RUN . /opt/ros/noetic/setup.sh && catkin build \
-    --workspace ${CPK_CODE_DIR}
-
-# install packages dependencies
-RUN cpk-install-packages-dependencies
-
-# define default command
-CMD ["bash", "-c", "launcher-${CPK_LAUNCHER}"]
-
-# store module metadata
-LABEL \
-    cpk.label.current="${ORGANIZATION}.${NAME}" \
-    cpk.label.project.${ORGANIZATION}.${NAME}.description="${DESCRIPTION}" \
-    cpk.label.project.${ORGANIZATION}.${NAME}.code.location="${PROJECT_PATH}" \
-    cpk.label.project.${ORGANIZATION}.${NAME}.base.registry="${BASE_REGISTRY}" \
-    cpk.label.project.${ORGANIZATION}.${NAME}.base.organization="${BASE_ORGANIZATION}" \
-    cpk.label.project.${ORGANIZATION}.${NAME}.base.project="${BASE_REPOSITORY}" \
-    cpk.label.project.${ORGANIZATION}.${NAME}.base.tag="${BASE_TAG}" \
-    cpk.label.project.${ORGANIZATION}.${NAME}.maintainer="${MAINTAINER}"
-# <== Do not change the code above this line
-# <==================================================
+# ==================================================>
+# temporarily put here for convenience
 
 # install Python3.6
 RUN add-apt-repository ppa:deadsnakes/ppa && \
@@ -117,6 +95,39 @@ RUN /tmp/assets/install_trtpose.sh
 # install opencv-python
 RUN pip3.6 install opencv-python
 
+# install scipy
+RUN pip3.6 install -U scipy
+
 # # for quick testing
 # RUN apt install -y tmux
 # RUN pip3.6 install notebook ipywidgets && pip3.6 uninstall -y cffi
+
+# temporarily put here for convenience
+# <==================================================
+
+
+# copy the source code
+COPY ./packages "${CPK_PROJECT_PATH}/packages"
+
+# build catkin workspace
+RUN . /opt/ros/noetic/setup.sh && catkin build \
+    --workspace ${CPK_CODE_DIR}
+
+# install packages dependencies
+RUN cpk-install-packages-dependencies
+
+# define default command
+CMD ["bash", "-c", "launcher-${CPK_LAUNCHER}"]
+
+# store module metadata
+LABEL \
+    cpk.label.current="${ORGANIZATION}.${NAME}" \
+    cpk.label.project.${ORGANIZATION}.${NAME}.description="${DESCRIPTION}" \
+    cpk.label.project.${ORGANIZATION}.${NAME}.code.location="${PROJECT_PATH}" \
+    cpk.label.project.${ORGANIZATION}.${NAME}.base.registry="${BASE_REGISTRY}" \
+    cpk.label.project.${ORGANIZATION}.${NAME}.base.organization="${BASE_ORGANIZATION}" \
+    cpk.label.project.${ORGANIZATION}.${NAME}.base.project="${BASE_REPOSITORY}" \
+    cpk.label.project.${ORGANIZATION}.${NAME}.base.tag="${BASE_TAG}" \
+    cpk.label.project.${ORGANIZATION}.${NAME}.maintainer="${MAINTAINER}"
+# <== Do not change the code above this line
+# <==================================================

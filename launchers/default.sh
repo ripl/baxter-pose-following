@@ -6,8 +6,11 @@ source /cpk/environment.sh
 
 
 # launching app
-cpk-exec roslaunch realsense2_camera rs_camera.launch
-python3.6 $CPK_PROJECT_PATH/packages/trt_pose/src/pose_estimator.py
+source ${CPK_CODE_DIR}/devel/setup.bash
+cpk-exec roslaunch realsense2_camera rs_camera.launch align_depth:=true
+cpk-exec rosrun trt_pose pose_estimator.py
+cpk-exec rosrun trt_pose pose_tracker.py
+rosrun trt_pose pose_visualizer.py
 
 
 # ----------------------------------------------------------------------------
