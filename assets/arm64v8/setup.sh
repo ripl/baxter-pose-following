@@ -13,9 +13,13 @@ cp /tmp/assets/pip3.6 /usr/local/bin/pip3.6
 # update-alternatives --install \
 #     /usr/local/bin/pip3 pip3 "$(which pip3.6)" 1
 
+
 # remove system-level python libraries
 rm -rf /usr/lib/python3/dist-packages/PIL*
 rm -rf /usr/lib/python3/dist-packages/numpy*
+
+# upgrade pip
+pip3.6 install -U pip
 
 # configure nvidia drivers for Jetson Nano boards
 mkdir -p /usr/share/egl/egl_external_platform.d/

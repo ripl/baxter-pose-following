@@ -77,9 +77,6 @@ COPY ./assets/${ARCH}/ /tmp/assets
 # setup environment (arch-specific)
 RUN /tmp/assets/setup.sh
 
-# upgrade pip
-RUN pip3.6 install -U pip
-
 # install PyTorch
 RUN /tmp/assets/install_torch.sh
 
