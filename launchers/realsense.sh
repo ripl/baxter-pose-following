@@ -6,7 +6,6 @@ source /cpk/environment.sh
 
 
 # launching app
-source ${CPK_CODE_DIR}/devel/setup.bash
 roslaunch realsense2_camera rs_camera.launch \
     depth_width:=424 \
     depth_height:=240 \

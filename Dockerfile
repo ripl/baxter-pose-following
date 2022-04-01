@@ -92,10 +92,6 @@ RUN /tmp/assets/install_torch2trt.sh
 # install TRTPose
 RUN /tmp/assets/install_trtpose.sh
 
-# # for quick testing
-# RUN apt install -y tmux
-# RUN pip3.6 install notebook ipywidgets && pip3.6 uninstall -y cffi
-
 # temporarily put here for convenience
 # <==================================================
 
