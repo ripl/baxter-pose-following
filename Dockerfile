@@ -77,6 +77,9 @@ COPY ./assets/${ARCH}/ /tmp/assets
 # setup environment (arch-specific)
 RUN /tmp/assets/setup.sh
 
+# install arch-specific dependencies
+RUN /tmp/assets/install_deps.sh
+
 # install PyTorch
 RUN /tmp/assets/install_torch.sh
 
@@ -88,12 +91,6 @@ RUN /tmp/assets/install_torch2trt.sh
 
 # install TRTPose
 RUN /tmp/assets/install_trtpose.sh
-
-# install opencv-python
-RUN pip3.6 install opencv-python
-
-# install scipy
-RUN pip3.6 install -U scipy
 
 # # for quick testing
 # RUN apt install -y tmux
