@@ -12,3 +12,4 @@ export PYTHONPATH="${PYTHONPATH//python3.8/python3.6}"
 # configure ROS network
 export ROS_MASTER_URI=http://10.0.0.10:11311
 export ROS_HOSTNAME=backpack.local
+# export ROS_HOSTNAME=slin-HP-Spectre.local

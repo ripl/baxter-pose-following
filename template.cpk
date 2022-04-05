@@ -17,6 +17,13 @@
             "triggers": [
                 "run:mount"
             ]
+        },
+        {
+            "source": "/var/run/avahi-daemon/socket",
+            "destination": "/var/run/avahi-daemon/socket",
+            "triggers": [
+                "run:mount"
+            ]
         }
     ]
 }
