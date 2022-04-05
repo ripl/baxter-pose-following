@@ -1,3 +1,6 @@
 [submodule "packages/trt_pose"]
 	path = packages/trt_pose
 	url = git@github.com:ripl/trt-pose.git
+[submodule "packages/pose2movement"]
+	path = packages/pose2movement
+	url = git@github.com:StArchon94/baxter-pose2movement.git
