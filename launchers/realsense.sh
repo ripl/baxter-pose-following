@@ -1,6 +1,4 @@
 #!/bin/bash
-source /cpk/environment.sh
-
 # YOUR CODE BELOW THIS LINE
 # ----------------------------------------------------------------------------
 
