@@ -3,7 +3,7 @@ cpk build -H backpack -f
 cpk build -f
 
 
-cpk run -H backpack -L realsense --name realsense -fsM -- --privileged --net host
+cpk run -H backpack -L realsense --name realsense -fsM -- --privileged --gpus all --net host
 
 cpk run -H backpack -fsM -- --gpus all --net host
 
