@@ -7,8 +7,8 @@ source /cpk/environment.sh
 
 # launching app
 source ${CPK_CODE_DIR}/devel/setup.bash
-cpk-exec rosrun pose2movement pose2joint.py
-rosrun pose2movement coords_viz.py
+# cpk-exec rosrun pose2movement coords_viz.py
+rosrun pose2movement coords2movement.py
 
 
 # ----------------------------------------------------------------------------
