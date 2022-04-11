@@ -7,6 +7,7 @@ source /cpk/environment.sh
 
 # launching app
 source ${CPK_CODE_DIR}/devel/setup.bash
+cpk-exec rosrun trt_pose pose_estimator.py
 cpk-exec rosrun trt_pose pose_tracker.py
 rosrun trt_pose pose_visualizer.py
 
