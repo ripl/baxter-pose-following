@@ -3,7 +3,7 @@
 	url = git@github.com:ripl/trt-pose.git
 [submodule "packages/pose2movement"]
 	path = packages/pose2movement
-	url = git@github.com:StArchon94/baxter-pose2movement.git
+	url = git@github.com:ripl/baxter-pose2movement.git
 [submodule "packages/baxter_moveit_config"]
 	path = packages/baxter_moveit_config
 	url = git@github.com:ripl/baxter_moveit_config.git
