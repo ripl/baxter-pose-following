@@ -1,6 +1,6 @@
 # Usage
 
-make sure git-lfs is installed
+make sure git-lfs is installed, then
 
 `git clone --recursive git@github.com:ripl/baxter-pose-demo.git`
 
@@ -10,13 +10,9 @@ make sure git-lfs is installed
 
 ## build on backpack
 
-make sure `ROS_HOSTNAME` in setup.sh is correct
-
 `cpk build -H backpack -f`
 
 ## build locally
-
-make sure `ROS_HOSTNAME` in setup.sh is correct
 
 `cpk build -f`
 
