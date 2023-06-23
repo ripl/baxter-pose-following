@@ -1,15 +1,13 @@
 #!/bin/bash
-source /cpk/environment.sh
 
 # YOUR CODE BELOW THIS LINE
 # ----------------------------------------------------------------------------
 
 
 # launching app
-source ${CPK_CODE_DIR}/devel/setup.bash
-cpk-exec rosrun trt_pose pose_estimator.py
-cpk-exec rosrun trt_pose pose_tracker.py
-rosrun trt_pose pose_visualizer.py
+rosrun human_pose_tracking pose_estimator.py &
+rosrun human_pose_tracking pose_tracker.py &
+rosrun human_pose_tracking pose_visualizer.py
 
 
 # ----------------------------------------------------------------------------

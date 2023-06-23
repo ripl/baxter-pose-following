@@ -1,7 +1,7 @@
 {
-    "description": "Baxter Pose Demo",
-    "maintainer": "ripl",
-    "name": "baxter-pose-demo",
+    "description": "Empower Baxter to follow a person's pose in real time.",
+    "maintainer": "Shengjie Lin <slin@ttic.edu>",
+    "name": "baxter-pose-following",
     "organization": "ripl",
     "schema": "1.0",
     "template": null,

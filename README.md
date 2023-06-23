@@ -1,33 +1,17 @@
-# Usage
+# Baxter Pose Following
 
-make sure git-lfs is installed, then
+Empower Baxter to follow a person's pose in real time. This image is based on `ripl/baxter-docker:main-amd64`.
 
-`git clone --recursive git@github.com:ripl/baxter-pose-demo.git`
+## Build
 
-## create a cpk remote machine
+    git clone --recurse-submodules git@github.com:ripl/baxter-pose-following.git && cd baxter-pose-following/
+    cpk build
 
-`cpk machine create backpack ripl@backpack.local`
+## Run
 
-## build on backpack
+    cpk run -c bash -X --net host
 
-`cpk build -H backpack -f`
+## Usage
 
-## build locally
-
-`cpk build -f`
-
-## start realsense on backpack
-
-`cpk run -H backpack -L realsense --name realsense -fsM -- --privileged --net host`
-
-## start trt pose on backpack
-
-`cpk run -H backpack -fsM -- --gpus all --net host`
-
-## start pose2joint locally
-
-`cpk run -L pose2joint --name pose2joint -fM -- --net host`
-
-## start movement_by_angles locally
-
-`cpk run -L movement_by_angles --name movement_by_angles -fM -- --net host`
+    # Start the RealSense camera
+    cpk run -n realsense -L realsense --net host -- --privileged

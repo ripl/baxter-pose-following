@@ -1,9 +1,3 @@
-[submodule "packages/trt_pose"]
-	path = packages/trt_pose
-	url = git@github.com:ripl/trt-pose.git
-[submodule "packages/pose2movement"]
-	path = packages/pose2movement
-	url = git@github.com:ripl/baxter-pose2movement.git
-[submodule "packages/baxter_moveit_config"]
-	path = packages/baxter_moveit_config
-	url = git@github.com:ripl/baxter_moveit_config.git
+[submodule "packages/human-pose-tracking"]
+	path = packages/human-pose-tracking
+	url = git@github.com:ripl/human-pose-tracking.git

@@ -1,1 +1,6 @@
 # LIST YOUR PYTHON3 PACKAGES HERE
+
+openmim
+torch
+torchvision
+tyro

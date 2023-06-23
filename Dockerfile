@@ -9,7 +9,7 @@ ARG MAINTAINER
 # ==> Do not change the code below this line
 ARG BASE_REGISTRY=docker.io
 ARG BASE_ORGANIZATION=ripl
-ARG BASE_REPOSITORY=baxter-base-docker
+ARG BASE_REPOSITORY=baxter-docker
 ARG BASE_TAG=main
 
 # define base image
@@ -17,7 +17,6 @@ FROM ${BASE_REGISTRY}/${BASE_ORGANIZATION}/${BASE_REPOSITORY}:${BASE_TAG}-${ARCH
 
 # recall all arguments
 # - current project
-ARG ARCH
 ARG NAME
 ARG ORGANIZATION
 ARG DESCRIPTION
@@ -52,7 +51,10 @@ RUN cpk-apt-install ${PROJECT_PATH}/dependencies-apt.txt
 
 # install python3 dependencies
 COPY ./dependencies-py3.txt "${PROJECT_PATH}/"
+RUN pip install -I pyyaml
 RUN cpk-pip3-install ${PROJECT_PATH}/dependencies-py3.txt
+RUN mim install mmcv mmdet mmengine mmpose
+RUN python3 -c "from mmpose.apis import MMPoseInferencer; MMPoseInferencer(pose2d='human')"
 
 # install launcher scripts
 COPY ./launchers/. "${PROJECT_LAUNCHERS_PATH}/"
@@ -62,45 +64,11 @@ RUN cpk-install-launchers "${PROJECT_LAUNCHERS_PATH}"
 # copy project root
 COPY ./*.cpk ./*.sh ${PROJECT_PATH}/
 
-
-# ==================================================>
-# temporarily put here for convenience
-
-# install Python3.6
-RUN add-apt-repository ppa:deadsnakes/ppa && \
-    apt update && \
-    apt install --no-install-recommends -y python3.6 python3.6-dev
-
-# copy arch-specific scripts
-COPY ./assets/${ARCH}/ /tmp/assets
-
-# setup environment (arch-specific)
-RUN /tmp/assets/setup.sh
-
-# install arch-specific dependencies
-RUN /tmp/assets/install_deps.sh
-
-# install PyTorch
-RUN /tmp/assets/install_torch.sh
-
-# install TorchVision
-RUN /tmp/assets/install_torchvision.sh
-
-# install Torch2TRT
-RUN /tmp/assets/install_torch2trt.sh
-
-# install TRTPose
-RUN /tmp/assets/install_trtpose.sh
-
-# temporarily put here for convenience
-# <==================================================
-
-
 # copy the source code
 COPY ./packages "${CPK_PROJECT_PATH}/packages"
 
 # build catkin workspace
-RUN . /opt/ros/noetic/setup.sh && catkin build \
+RUN catkin build \
     --workspace ${CPK_CODE_DIR}
 
 # install packages dependencies
