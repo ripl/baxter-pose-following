@@ -19,6 +19,8 @@ cpk run --net host -- --gpus all --privileged
 ## Development
 
 ```bash
+# Start the demo
+cpk run -f -M --net host -- --gpus all --privileged
 # Start the RealSense camera
 cpk run -n realsense -L realsense --net host -- --privileged
 # Start pose tracking

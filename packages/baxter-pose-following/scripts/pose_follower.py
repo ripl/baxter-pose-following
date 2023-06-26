@@ -5,7 +5,7 @@ from threading import Thread
 import numpy as np
 import rospy
 import tyro
-from baxter_interface import Limb
+from baxter_interface import Limb, RobotEnable
 from cv_bridge import CvBridge
 from human_pose_tracking.msg import TrackedPoses
 from np_bridge import to_np_array
@@ -47,9 +47,10 @@ class PoseFollower:
         self.cv_bridge = CvBridge()
         rospy.init_node('pose_follower')
         self.K_inv = np.linalg.inv(np.reshape(rospy.wait_for_message('/camera/color/camera_info', CameraInfo).K, (3, 3)))
+        RobotEnable().enable()
         self.limbs = {limb: Limb(limb) for limb in limbs}
         for limb in limbs:
-            Thread(target=self.move_limb, args=(limb,)).start()
+            Thread(target=self.move_limb, args=(limb,), daemon=True).start()
         rospy.Subscriber('/tracked_poses', TrackedPoses, callback=self.pose_callback, queue_size=1)
         rospy.loginfo('Pose Follower Node is Up!')
         rospy.spin()
