@@ -5,7 +5,7 @@
 
 
 # launching app
-rosrun baxter_pose_following pose_following.py
+rosrun baxter_pose_following pose_follower.py
 
 
 # ----------------------------------------------------------------------------

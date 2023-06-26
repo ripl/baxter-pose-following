@@ -21,14 +21,20 @@ cpk run --net host -- --gpus all --privileged
 ```bash
 # Start the demo
 cpk run -f -M --net host -- --gpus all --privileged
+```
+
+```bash
 # Start the RealSense camera
 cpk run -n realsense -L realsense --net host -- --privileged
 # Start pose tracking
 cpk run -f -n pose-tracking -L pose_tracking -M --net host -- --gpus all
 # Start pose following
 cpk run -f -n pose-following -L pose_following -M --net host
-# Run the container in interactive mode
+```
+
+```bash
+# Start the container in interactive mode
 cpk run -f -n dev -c bash -M -X --net host -- --gpus all --privileged
-# Run the container in detached mode
+# Start the container in detached mode
 cpk run -f -n dev -c bash -M -X --net host -d -- --gpus all --privileged
 ```
