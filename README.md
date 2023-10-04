@@ -5,7 +5,7 @@ Empower Baxter to follow a person's pose in real time. This image is based on [`
 ## Build
 
 ```bash
-git clone --recurse-submodules git@github.com:ripl/baxter-pose-following.git && cd baxter-pose-following/
+git clone --recurse-submodules https://github.com/ripl/baxter-pose-following.git && cd baxter-pose-following/
 cpk build
 ```
 
