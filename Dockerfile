@@ -50,8 +50,8 @@ COPY ./dependencies-apt.txt "${PROJECT_PATH}/"
 RUN cpk-apt-install ${PROJECT_PATH}/dependencies-apt.txt
 
 # install python3 dependencies
-COPY ./dependencies-py3.txt "${PROJECT_PATH}/"
 RUN pip install -I pyyaml
+COPY ./dependencies-py3.txt "${PROJECT_PATH}/"
 RUN cpk-pip3-install ${PROJECT_PATH}/dependencies-py3.txt
 RUN mim install mmpose
 RUN python3 -c "from mmpose.apis import MMPoseInferencer; MMPoseInferencer(pose2d='human')"

@@ -1,6 +1,6 @@
 # LIST YOUR PYTHON3 PACKAGES HERE
 
 openmim
-torch==2.0.*
+torch
 torchvision
 tyro
