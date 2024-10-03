@@ -12,8 +12,14 @@ cpk build
 ## Run
 
 ```bash
-# Start the demo
+# After starting up Baxter
+cpk run -L start_up --net host
+
+# Run the demo
 cpk run --net host -- --gpus all --privileged
+
+# Before shuting down Baxter
+cpk run -L shut_down --net host
 ```
 
 ## Development

@@ -1,4 +1,3 @@
 # LIST YOUR APT PACKAGES HERE
 
-python3-tk
 ros-${ROS_DISTRO}-realsense2-camera
