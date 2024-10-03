@@ -22,8 +22,6 @@ class PoseFollower:
     """Yaw angle of the camera (measured in degrees)."""
     reset_timeout: float = 3
     """Timeout (in seconds) before resetting the robot to its neutral position."""
-    movement_timeout: float = 0.3
-    """Timeout (in seconds) for moving the robot to the target pose."""
 
     def main(self):
         pitch = np.deg2rad(self.pitch)
@@ -70,7 +68,7 @@ class PoseFollower:
         while True:
             if self.angles[limb][0] is not None and rospy.get_time() - self.angles[limb][0] > self.reset_timeout:
                 self.angles[limb] = [None, list(self.neutral_angles)]
-            self.limbs[limb].move_to_joint_positions(dict(list(zip(joint_names, self.angles[limb][1]))), timeout=self.movement_timeout)
+            self.limbs[limb].set_joint_positions(dict(list(zip(joint_names, self.angles[limb][1]))))
 
     def update_angles(self, poses, valids):
         # poses: (3, 17)
